@@ -97,7 +97,7 @@ fun LocationCheckScreen(sdk: IsInCountry) {
             OutlinedTextField(
                 value = countryCodeInput,
                 onValueChange = { countryCodeInput = it },
-                label = { Text("Country Code (e.g., IL)") },
+                label = { Text("Country Code (e.g., IL)") },//
                 modifier = Modifier.fillMaxWidth()
             )
 
