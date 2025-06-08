@@ -67,6 +67,7 @@ fun LocationCheckScreen(sdk: IsInCountry) {
 
     var latInput by remember { mutableStateOf(TextFieldValue("")) }
     var lngInput by remember { mutableStateOf(TextFieldValue("")) }
+    var countryCodeInput by remember { mutableStateOf(TextFieldValue("")) }
 
     Box(
         modifier = Modifier
@@ -91,23 +92,38 @@ fun LocationCheckScreen(sdk: IsInCountry) {
                 modifier = Modifier.fillMaxWidth()
             )
 
+            Spacer(modifier = Modifier.height(8.dp))
+
+            OutlinedTextField(
+                value = countryCodeInput,
+                onValueChange = { countryCodeInput = it },
+                label = { Text("Country Code (e.g., IL)") },
+                modifier = Modifier.fillMaxWidth()
+            )
+
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(onClick = {
                 val lat = latInput.text.toDoubleOrNull()
                 val lng = lngInput.text.toDoubleOrNull()
+                val countryCode = countryCodeInput.text.trim().uppercase()
 
                 if (lat == null || lng == null) {
                     result = "Please enter valid coordinates"
                     return@Button
                 }
 
+                if (countryCode.isEmpty()) {
+                    result = "Please enter a valid country code"
+                    return@Button
+                }
+
                 isLoading = true
                 result = null
 
-                sdk.checkManualLocation(context, lat, lng, "IL") { inside ->
+                sdk.checkManualLocation(context, lat, lng, countryCode) { inside ->
                     Log.d("UI", "✅ Manual callback: $inside")
-                    result = if (inside) "✅ Inside Israel" else "❌ Outside Israel"
+                    result = if (inside) "✅ Inside $countryCode" else "❌ Outside $countryCode"
                     isLoading = false
                 }
             }) {
