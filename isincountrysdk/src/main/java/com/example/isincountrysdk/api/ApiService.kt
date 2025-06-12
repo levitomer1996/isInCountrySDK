@@ -18,7 +18,7 @@ interface ApiService {
     companion object {
         fun create(): ApiService {
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://10.100.102.122:4000/")
+                .baseUrl("https://is-in-country-api.onrender.com/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
             return retrofit.create(ApiService::class.java)

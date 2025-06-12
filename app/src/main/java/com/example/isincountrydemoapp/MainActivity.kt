@@ -16,6 +16,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
@@ -62,6 +63,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun LocationCheckScreen(sdk: IsInCountry) {
     val context = LocalContext.current
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     var result by remember { mutableStateOf<String?>(null) }
     var isLoading by remember { mutableStateOf(false) }
 
@@ -97,13 +100,15 @@ fun LocationCheckScreen(sdk: IsInCountry) {
             OutlinedTextField(
                 value = countryCodeInput,
                 onValueChange = { countryCodeInput = it },
-                label = { Text("Country Code (e.g., IL)") },//
+                label = { Text("Country Code (e.g., IL)") },
                 modifier = Modifier.fillMaxWidth()
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(onClick = {
+                keyboardController?.hide() // ✅ Hide the keyboard
+
                 val lat = latInput.text.toDoubleOrNull()
                 val lng = lngInput.text.toDoubleOrNull()
                 val countryCode = countryCodeInput.text.trim().uppercase()
