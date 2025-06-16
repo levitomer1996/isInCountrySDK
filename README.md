@@ -1,6 +1,8 @@
 
 # 🌍 IsInCountry SDK
 
+[Portal]([url](https://is-in-country-sdk-portal.netlify.app/))
+
 A lightweight SDK and API service that determines whether a geographic coordinate is inside a specific country using **GeoJSON polygons**.
 
 ---
@@ -132,10 +134,6 @@ Returns a list of all stored countries with their polygons.
 
 Clone this repository and follow the instructions for:
 
-- 🔧 [Backend Setup](#)
-- 📱 [Android SDK Integration](#)
-- 🖥️ [Admin Portal Usage](#)
-
 > You can also pull the Android SDK via [JitPack](https://jitpack.io/#levitomer1996/isInCountrySDK)
 
 ```groovy
@@ -151,6 +149,6 @@ Submit a PR or contact us to contribute your data!
 
 ---
 
-## 📄 License
+
 
 This project is licensed under the MIT License.
