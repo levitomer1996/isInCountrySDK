@@ -59,7 +59,8 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.appcompat)
-
+        // API implemantation
+    implementation("com.github.levitomer1996:isInCountrySDK:1.0.0")
     // Google Location
     implementation("com.google.android.gms:play-services-location:21.3.0")
 
