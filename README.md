@@ -1,7 +1,7 @@
 
 # 🌍 IsInCountry SDK
 
-[Portal]([url](https://is-in-country-sdk-portal.netlify.app/))
+Further information in our PORTAL - https://is-in-country-sdk-portal.netlify.app/
 
 A lightweight SDK and API service that determines whether a geographic coordinate is inside a specific country using **GeoJSON polygons**.
 
